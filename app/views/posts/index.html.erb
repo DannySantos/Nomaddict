@@ -1,29 +1,54 @@
-<p id="notice"><%= notice %></p>
+<main class="posts">
+  <header class="home remainder-height v-center-parent">
+    <div class="v-center-child tac">
+      <h1>DannySantos.me</h1>
+    </div>
+  </header>
 
-<h1>Posts</h1>
+  <div class="col-sm-8 col-sm-offset-2">
+    <h2>This is my blog</h2>
+    
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsam hic velit atque blanditiis veritatis tempore, eaque doloremque, libero exercitationem aspernatur fugit voluptas alias nihil voluptate soluta. Nesciunt, sit, dolorem!
+    </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsam hic velit atque blanditiis veritatis tempore, eaque doloremque, libero exercitationem aspernatur fugit voluptas alias nihil voluptate soluta. Nesciunt, sit, dolorem!
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsam hic velit atque blanditiis veritatis tempore, eaque doloremque, libero exercitationem aspernatur fugit voluptas alias nihil voluptate soluta. Nesciunt, sit, dolorem!
+    </p>
 
-  <tbody>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsam hic velit atque blanditiis veritatis tempore, eaque doloremque, libero exercitationem aspernatur fugit voluptas alias nihil voluptate soluta. Nesciunt, sit, dolorem!
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsam hic velit atque blanditiis veritatis tempore, eaque doloremque, libero exercitationem aspernatur fugit voluptas alias nihil voluptate soluta. Nesciunt, sit, dolorem!
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsam hic velit atque blanditiis veritatis tempore, eaque doloremque, libero exercitationem aspernatur fugit voluptas alias nihil voluptate soluta. Nesciunt, sit, dolorem!
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsam hic velit atque blanditiis veritatis tempore, eaque doloremque, libero exercitationem aspernatur fugit voluptas alias nihil voluptate soluta. Nesciunt, sit, dolorem!
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsam hic velit atque blanditiis veritatis tempore, eaque doloremque, libero exercitationem aspernatur fugit voluptas alias nihil voluptate soluta. Nesciunt, sit, dolorem!
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsam hic velit atque blanditiis veritatis tempore, eaque doloremque, libero exercitationem aspernatur fugit voluptas alias nihil voluptate soluta. Nesciunt, sit, dolorem!
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsam hic velit atque blanditiis veritatis tempore, eaque doloremque, libero exercitationem aspernatur fugit voluptas alias nihil voluptate soluta. Nesciunt, sit, dolorem!
+    </p>
+      
+    <h2>The Posts</h2>
+    
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="mb20">
+        <%= link_to post.title, post %>
+        <br>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+    <%= link_to 'New Post', new_post_path %>
+  </div>
+</main>

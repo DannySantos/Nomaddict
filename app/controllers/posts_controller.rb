@@ -15,10 +15,12 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @button_text = "Create Post"
   end
 
   # GET /posts/1/edit
   def edit
+    @button_text = "Update Post"
   end
 
   # POST /posts

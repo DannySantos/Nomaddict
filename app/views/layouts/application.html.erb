@@ -4,11 +4,19 @@
     <title>DannysantosBlog</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
+    <nav class="primary poa t0 w100p">
+      <%= link_to "DannySantos.me", root_path, class: "ml20" %>
+    </nav>
+    
     <%= yield %>
+    
+    <footer class="primary">
+      
+    </footer>
   </body>
 </html>

@@ -1,9 +1,21 @@
-<div class="col-sm-8 col-sm-offset-2">
-  <h1><%= @post.title %></h1>
+<main class="posts">
+  <article>
+    <header class="primary remainder-height tac v-center-parent">
+      <div class="header-content v-center-child">
+        <div class="header-content-border">
+          <h1><%= @post.title %></h1>
+          <span class="author">By Danny Santos</span>
+          <time><%= @post.created_at.strftime("%d/%m/%Y") %></time>
+        </div>
+      </div>
+    </header>
+    
+    <div class="col-sm-8 col-sm-offset-2">
+      <%= @post.content.html_safe %>
+    </div>
+    
+    <footer class="clb"></footer>
+  </article>
 
-  <main>
-    <%= @post.content %>
-  </main>
-
-  <%= link_to 'Edit', edit_post_path(@post) %> |
-</div>
+  <nav class="tac"><%= link_to 'Edit', edit_post_path(@post), class: "btn mb20" %></nav>
+</main>
