@@ -1,6 +1,6 @@
 <main class="posts">
   <article>
-    <header class="primary remainder-height tac v-center-parent">
+    <header class="primary remainder-height tac v-center-parent" style="background-image:url(<%= image_path @post.header_image_url if @post.header_image_url %>)">
       <div class="header-content v-center-child">
         <div class="header-content-border">
           <h1><%= @post.title %></h1>
