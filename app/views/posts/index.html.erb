@@ -43,12 +43,19 @@
     
     <% @posts.each do |post| %>
       <div class="mb20">
-        <%= link_to post.title, post %>
-        <br>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if post.published_at %>
+          <%= link_to post.title, post %>
+        
+          <% if current_user %>
+            <br>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
 
-    <%= link_to 'New Post', new_post_path %>
+    <% if current_user %>
+      <%= link_to 'New Post', new_post_path %>
+    <% end %>
   </div>
 </main>

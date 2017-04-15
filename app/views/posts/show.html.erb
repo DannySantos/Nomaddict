@@ -1,21 +1,47 @@
-<main class="posts">
-  <article>
-    <header class="primary remainder-height tac v-center-parent" style="background-image:url(<%= image_path @post.header_image_url if @post.header_image_url %>)">
-      <div class="header-content v-center-child">
-        <div class="header-content-border">
-          <h1><%= @post.title %></h1>
-          <span class="author">By Danny Santos</span>
-          <time><%= @post.created_at.strftime("%d/%m/%Y") %></time>
+<% if @post.published_at || current_user %>
+  <main class="posts">
+    <article>
+      <header class="primary remainder-height tac v-center-parent" style="background-image:url(<%= image_path @post.header_image_url if @post.header_image_url %>)">
+        <div class="header-content v-center-child">
+          <div class="header-content-border">
+            <h1><%= @post.title %></h1>
+            <span class="author">By Danny Santos</span>
+            <time><%= @post.created_at.strftime("%d/%m/%Y") %></time>
+          </div>
         </div>
-      </div>
-    </header>
-    
-    <div class="col-sm-8 col-sm-offset-2">
-      <%= @post.content.html_safe %>
-    </div>
-    
-    <footer class="clb"></footer>
-  </article>
+      </header>
 
-  <nav class="tac"><%= link_to 'Edit', edit_post_path(@post), class: "btn mb20" %></nav>
-</main>
+      <div class="col-sm-8 col-sm-offset-2">
+        <%= @post.content.html_safe %>
+      </div>
+
+      <footer class="clb"></footer>
+    </article>
+
+    <% if current_user %>
+      <nav class="tac mb20">
+        <ul class="lisn">
+          <li>
+            <%= link_to 'Edit', edit_post_path(@post), class: "btn" %>
+          </li>
+
+          <% unless @post.published_at %>
+            <li>
+              <%= form_for(@post) do |f| %>
+                <%= f.hidden_field :published_at, value: Date.today %>
+                <%= f.submit 'Publish', class: "btn" %>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= form_for(@post) do |f| %>
+                <%= f.hidden_field :published_at, value: "" %>
+                <%= f.submit 'Unpublish', class: "btn" %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    <% end %>
+  </main>
+<% end %>
