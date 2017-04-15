@@ -1,0 +1,29 @@
+<div class="devise remainder-height v-center-parent">
+  <div class="v-center-child">
+    <div class="v-adjust col-sm-4 col-sm-offset-4">
+      <h2>Log in</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email do %>
+            <span class="screenreader">Email</span>  
+          <% end %>
+
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password do %>
+            <span class="screenreader">Password</span>  
+          <% end %>
+
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Log in", class: "btn form-control" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
