@@ -43,10 +43,10 @@
     
     <% @posts.each do |post| %>
       <div class="mb20">
-        <% if post.published_at %>
+        <% if post.published_at || (current_user && current_user.is_admin?) %>
           <%= link_to post.title, post %>
         
-        <% if current_user && current_user.is_admin? %>
+          <% if current_user && current_user.is_admin? %>
             <br>
             <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
