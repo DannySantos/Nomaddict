@@ -46,7 +46,7 @@
         <% if post.published_at %>
           <%= link_to post.title, post %>
         
-          <% if current_user %>
+        <% if current_user && current_user.is_admin? %>
             <br>
             <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
@@ -54,7 +54,7 @@
       </div>
     <% end %>
 
-    <% if current_user %>
+    <% if current_user && current_user.is_admin? %>
       <%= link_to 'New Post', new_post_path %>
     <% end %>
   </div>

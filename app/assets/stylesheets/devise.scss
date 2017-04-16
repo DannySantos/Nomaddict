@@ -1,7 +1,21 @@
 .devise {
   background-color: #333;
+  color: #fff;
   
-  h2 {
+  h2, h3, a, .btn {
     color: #f9f9f9;
+  }
+  
+  .or {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: -30px;
+    background-color: #fff;
+    color: #333;
   }
 }

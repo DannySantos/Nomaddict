@@ -10,6 +10,9 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comments = @post.comments
+    @comment = Comment.new
+    @post.header_image_url = "post_header_sample.jpg" if @post.header_image_url.empty?
   end
 
   # GET /posts/new

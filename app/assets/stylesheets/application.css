@@ -29,7 +29,7 @@ footer.primary {
 }
 
 textarea.form-control {
-  height: 500px;
+  min-height: 200px;
 }
 
 .v-center-parent {
@@ -71,6 +71,7 @@ progress {
   border: none;
   background-color: transparent;
   color: deepskyblue;
+  z-index: 1000;
 }
 
 progress::-webkit-progress-bar {

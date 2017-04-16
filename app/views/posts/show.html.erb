@@ -1,7 +1,7 @@
-<% if @post.published_at || current_user %>
+<% if @post.published_at || (current_user && current_user.is_admin?) %>
   <main class="posts">
     <article>
-      <header class="primary remainder-height tac v-center-parent" style="background-image:url(<%= image_path @post.header_image_url if @post.header_image_url %>)">
+      <header class="primary remainder-height tac v-center-parent" style="background-image:url(<%= image_path @post.header_image_url %>)">
         <div class="header-content v-center-child">
           <div class="header-content-border">
             <h1><%= @post.title %></h1>
@@ -18,9 +18,48 @@
 
       <footer class="clb"></footer>
     </article>
+    
+    <section class="comments">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h2>Have your say</h2>
 
-    <% if current_user %>
-      <nav class="tac mb20">
+        <p>Always learning</p>
+
+        <p>I love to prove people wrong and I love to be proven wrong, it means that we are learning</p>
+
+        <p>Of course some of it is just plain old opinion</p>
+
+        <% if current_user %>
+          <%= form_for(@comment) do |f| %>
+            <%= f.label :content do %>
+              <span class="screenreader">Content</span>
+            <% end %>
+            <%= f.text_area :content, class: "form-control" %>
+
+            <%= f.hidden_field :post_id, value: @post.id %>
+
+            <div class="tar">
+              <%= f.submit "Add Comment", class: "btn" %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>
+            You need to <%= link_to "log in", new_user_session_path %> or <%= link_to "register", new_user_registration_path %> to post a comment. It takes 20 seconds and I promise won't spam you!
+          </p>
+        <% end %>
+
+        <% unless @comments.empty? %>
+          <%= render @comments %>
+        <% else %>
+          <p>No comments</p>
+        <% end %>
+      </div>
+      
+      <div class="clb"></div>
+    </section>
+
+    <% if current_user && current_user.is_admin? %>
+      <nav class="tac mb20 clb">
         <ul class="lisn">
           <li>
             <%= link_to 'Edit', edit_post_path(@post), class: "btn" %>

@@ -35,4 +35,18 @@
       font-size: 3em;
     }
   }
+  
+  .comments {
+    background-color: #f9f9f9;
+    border-top: 2px solid #eaeaea;
+    border-bottom: 2px solid #eaeaea;
+    
+    .comment {
+      background-color: aliceblue;
+    }
+  }
+  
+  .comments > div > p {
+    font-size: 0.8em;
+  }
 }
