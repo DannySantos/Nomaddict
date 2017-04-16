@@ -1,8 +1,4 @@
 <div class="comment">
-  <h3>
-    <%= comment.user.name unless comment.user.name.empty? %>
-    <%= "Anonymous" if comment.user.name.empty? %>
-  </h3>
-  
+  <h3><%= comment.user.name %></h3>
   <p><%= comment.content %></p>
 </div>
