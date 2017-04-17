@@ -1,19 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @comments = Comment.all
-  end
-
-  def show
-  end
-
-  def new
-    @comment = Comment.new
-  end
-
-  def edit
-  end
+  before_action :set_comment, only: [:update, :destroy]
 
   def create
     @comment = Comment.new(comment_params)
@@ -56,11 +42,12 @@ class CommentsController < ApplicationController
   end
 
   private
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    def comment_params
-      params.require(:comment).permit(:user_id, :post_id, :content, :comment_id)
-    end
+  def comment_params
+    params.require(:comment).permit(:user_id, :post_id, :content, :comment_id)
+  end
 end

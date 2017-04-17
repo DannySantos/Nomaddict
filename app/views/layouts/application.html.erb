@@ -9,7 +9,11 @@
   </head>
 
   <body>
-    <progress value="0"></progress>
+    <% if @post %>
+      <% unless @post.id.nil? %>
+        <progress value="0"></progress>
+      <% end %>
+    <% end %>
     
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
