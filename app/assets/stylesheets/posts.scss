@@ -41,8 +41,33 @@
     border-top: 2px solid #eaeaea;
     border-bottom: 2px solid #eaeaea;
     
+    .time-ago {
+      right: 20px;
+    }
+    
+    .comment, .reply {
+      margin: 20px 0;
+      padding: 20px;
+      border-left: 2px solid #999;
+      
+      h3 {
+        margin: 0;
+      }
+    }
+    
     .comment {
-      background-color: aliceblue;
+      background-color: #fff;
+    }
+    
+    .reply {
+      background-color: #f9f9f9;
+      width: 80%;
+      margin-left: 20%;
+    }
+    
+    .comment-reply-form {
+      width: 80%;
+      margin-left: 20%;
     }
   }
   

@@ -1,4 +1,42 @@
-<div class="comment">
-  <h3><%= comment.user.name %></h3>
+<div class="comment por">
+  <h3 class="di"><%= comment.user.name %></h3>
+  <p class="time-ago poa t0 text-s"><%= time_ago_in_words comment.created_at %> ago</p>
   <p><%= comment.content %></p>
+ 
+  <% if comment.comments.any? %>
+    <% comment.comments.each do |reply| %>
+      <div class="reply por">
+        <h3><%= comment.user.name %></h3>
+        <p class="time-ago poa t0 text-s"><%= time_ago_in_words reply.created_at %> ago</p>
+        <p><%= reply.content %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="tar m0">
+      <%#= link_to "Reply to this comment", "#reply-#{comment.id}", class: "text-s" %>
+      <span class="reply-reveal text-s tdu" id="#reply-<%= comment.id %>" data-comment-id="<%= comment.id %>">Reply to this comment</span>
+    </p>
+  <% end %>
+
+  <div id="reply-<%= comment.id %>" class="comment-reply-form mt20" style="<%= "display:none;" unless comment.comments.any? %>">
+    <% if current_user %>
+      <%= form_for(Comment.new) do |f| %>
+        <%= f.label :content do %>
+          <span class="screenreader">Content</span>
+        <% end %>
+        <%= f.text_area :content, class: "form-control" %>
+
+        <%= f.hidden_field :post_id, value: @post.id %>
+        <%= f.hidden_field :comment_id, value: comment.id %>
+
+        <div class="tar">
+          <%= f.submit "Add Comment", class: "btn" %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>
+        You need to <%= link_to "log in", new_user_session_path %> or <%= link_to "register", new_user_registration_path %> to post a comment. It takes 20 seconds and I promise won't spam you!
+      </p>
+    <% end %>
+  </div>
 </div>
