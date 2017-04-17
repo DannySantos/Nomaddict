@@ -40,6 +40,8 @@
     background-color: #f9f9f9;
     border-top: 2px solid #eaeaea;
     border-bottom: 2px solid #eaeaea;
+    padding-top: 50px;
+    margin-top: 50px;
     
     .time-ago {
       right: 20px;
@@ -73,9 +75,9 @@
     .reply-reveal, .comment-edit-reveal {
       cursor: pointer;
     }
-  }
-  
-  .comments > div > p {
-    font-size: 0.8em;
+    
+    textarea {
+      min-height: 100px;
+    }
   }
 }

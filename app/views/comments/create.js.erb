@@ -1,0 +1,5 @@
+<% if @comment.comment_id.nil? %>
+  $('#comments-container').prepend("<%= escape_javascript(render partial: 'comments/comment', locals: { comment: @comment }) %>");
+<% else %>
+  $('#comment-container-<%= @comment.comment_id %>').replaceWith("<%= escape_javascript(render partial: 'comments/comment', locals: { comment: @comment.comment }) %>");
+<% end %>

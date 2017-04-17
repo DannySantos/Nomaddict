@@ -1,0 +1,7 @@
+<%= form_for(comment, remote: true) do |f| %>
+  <%= f.text_area :content, class: "form-control" %>
+
+  <div class="tar">
+    <%= f.submit "Update", class: "btn" %>
+  </div>
+<% end %>

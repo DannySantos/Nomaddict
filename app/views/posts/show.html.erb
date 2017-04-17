@@ -20,17 +20,26 @@
     </article>
     
     <section class="comments">
-      <div class="col-sm-8 col-sm-offset-2">
+      <div class="col-sm-6 col-sm-offset-3 text-s">
         <h2>Have your say</h2>
 
-        <p>Always learning</p>
-
-        <p>I love to prove people wrong and I love to be proven wrong, it means that we are learning</p>
-
-        <p>Of course some of it is just plain old opinion</p>
+        <p>
+          I love to be proven wrong. It means that I've learnt something. Too many people stick stubbornly to their opinions and refuse to budge. The aim of a debate should never be to 'win', it should be to find truth and understanding.
+        </p>
+        
+        <ul>
+          <li>It's ok to offend</li>
+          <li>It's ok to be offended</li>
+          <li>It's ok to attack somebody's <strong>opinion</strong></li>
+          <li>It's not ok to attack somebody personally</li>
+        </ul>
+        
+        <p>
+          With that in mind I eagerly invite you to have your say, whether it's to support my argument or oppose it.
+        </p>
 
         <% if current_user %>
-          <%= form_for(@comment) do |f| %>
+        <%= form_for(@comment, remote: true, authenticity_token: true) do |f| %>
             <%= f.label :content do %>
               <span class="screenreader">Content</span>
             <% end %>
@@ -49,7 +58,9 @@
         <% end %>
 
         <% unless @comments.empty? %>
-          <%= render @comments %>
+          <div id="comments-container">
+            <%= render @comments %>
+          </div>
         <% else %>
           <p>No comments</p>
         <% end %>

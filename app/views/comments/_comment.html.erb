@@ -1,11 +1,11 @@
-<div class="comment por">
+<div class="comment por" id="comment-container-<%= comment.id %>">
   <h3 class="di"><%= comment.user.name %></h3>
   
   <p class="time-ago poa t0 text-s">
     <%= time_ago_in_words comment.created_at %> ago
     <% if can? :manage, comment %>
       - <span class="comment-edit-reveal tdu" id="#comment-edit-<%= comment.id %>" data-comment-edit-id="<%= comment.id %>">Edit</span>
-      <%= link_to "Delete", comment_path(comment), method: :delete %>
+      <%= link_to "Delete", comment_path(comment), method: :delete, remote: true %>
     <% end %>
   </p>
   
@@ -13,11 +13,8 @@
     <%= comment.content %>
   </p>
   
-  <div class="comment-edit" id="comment-edit-<%= comment.id %>" style="display:none;">
-    <%= form_for(comment) do |f| %>
-      <%= f.text_area :content, class: "form-control" %>
-      <%= f.submit "Update" %>
-    <% end %>
+  <div class="comment-edit pt10 pb10" id="comment-edit-<%= comment.id %>" style="display:none;">
+    <%= render "posts/edit_comment", comment: comment %>
   </div>
  
   <% if comment.comments.any? %>
@@ -29,7 +26,7 @@
 
           <% if can? :manage, reply %>
             - <span class="comment-edit-reveal tdu" id="#comment-edit-<%= reply.id %>" data-comment-edit-id="<%= reply.id %>">Edit</span>
-            <%= link_to "Delete", comment_path(reply), method: :delete %>
+            <%= link_to "Delete", comment_path(reply), method: :delete, remote: true %>
           <% end %>
         </p>
 
@@ -38,13 +35,7 @@
         </p>
 
         <div class="comment-edit pt10" id="comment-edit-<%= reply.id %>" style="display:none;">
-          <%= form_for(reply) do |f| %>
-            <%= f.text_area :content, class: "form-control" %>
-
-            <div class="tar">
-              <%= f.submit "Update", class: "btn" %>
-            </div>
-          <% end %>
+          <%= render "posts/edit_comment", comment: reply %>
         </div>
      
       </div>
@@ -57,7 +48,7 @@
 
   <div id="reply-<%= comment.id %>" class="comment-reply-form mt20" style="<%= "display:none;" unless comment.comments.any? %>">
     <% if current_user %>
-      <%= form_for(Comment.new) do |f| %>
+    <%= form_for(Comment.new, remote: true) do |f| %>
         <%= f.label :content do %>
           <span class="screenreader">Content</span>
         <% end %>
