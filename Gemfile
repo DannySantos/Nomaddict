@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'nokogiri'
+gem 'cancancan', '~> 1.10'
 
 group :development, :test do
   gem 'pry'

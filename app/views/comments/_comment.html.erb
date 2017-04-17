@@ -1,19 +1,56 @@
 <div class="comment por">
   <h3 class="di"><%= comment.user.name %></h3>
-  <p class="time-ago poa t0 text-s"><%= time_ago_in_words comment.created_at %> ago</p>
-  <p><%= comment.content %></p>
+  
+  <p class="time-ago poa t0 text-s">
+    <%= time_ago_in_words comment.created_at %> ago
+    <% if can? :manage, comment %>
+      - <span class="comment-edit-reveal tdu" id="#comment-edit-<%= comment.id %>" data-comment-edit-id="<%= comment.id %>">Edit</span>
+      <%= link_to "Delete", comment_path(comment), method: :delete %>
+    <% end %>
+  </p>
+  
+  <p class="comment-content" id="comment-content-<%= comment.id %>">
+    <%= comment.content %>
+  </p>
+  
+  <div class="comment-edit" id="comment-edit-<%= comment.id %>" style="display:none;">
+    <%= form_for(comment) do |f| %>
+      <%= f.text_area :content, class: "form-control" %>
+      <%= f.submit "Update" %>
+    <% end %>
+  </div>
  
   <% if comment.comments.any? %>
     <% comment.comments.each do |reply| %>
       <div class="reply por">
-        <h3><%= comment.user.name %></h3>
-        <p class="time-ago poa t0 text-s"><%= time_ago_in_words reply.created_at %> ago</p>
-        <p><%= reply.content %></p>
+        <h3><%= reply.user.name %></h3>
+        <p class="time-ago poa t0 text-s">
+          <%= time_ago_in_words reply.created_at %> ago
+
+          <% if can? :manage, reply %>
+            - <span class="comment-edit-reveal tdu" id="#comment-edit-<%= reply.id %>" data-comment-edit-id="<%= reply.id %>">Edit</span>
+            <%= link_to "Delete", comment_path(reply), method: :delete %>
+          <% end %>
+        </p>
+
+        <p id="comment-content-<%= reply.id %>">
+          <%= reply.content %>
+        </p>
+
+        <div class="comment-edit pt10" id="comment-edit-<%= reply.id %>" style="display:none;">
+          <%= form_for(reply) do |f| %>
+            <%= f.text_area :content, class: "form-control" %>
+
+            <div class="tar">
+              <%= f.submit "Update", class: "btn" %>
+            </div>
+          <% end %>
+        </div>
+     
       </div>
     <% end %>
   <% else %>
     <p class="tar m0">
-      <%#= link_to "Reply to this comment", "#reply-#{comment.id}", class: "text-s" %>
       <span class="reply-reveal text-s tdu" id="#reply-<%= comment.id %>" data-comment-id="<%= comment.id %>">Reply to this comment</span>
     </p>
   <% end %>
