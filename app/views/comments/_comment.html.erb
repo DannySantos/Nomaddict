@@ -18,7 +18,7 @@
   </div>
  
   <% if comment.comments.any? %>
-    <% comment.comments.each do |reply| %>
+      <% comment.comments.order("created_at ASC").each do |reply| %>
       <div class="reply por">
         <h3><%= reply.user.name %></h3>
         <p class="time-ago poa t0 text-s">

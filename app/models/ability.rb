@@ -11,5 +11,6 @@ class Ability
     end
     
     can :manage, Comment, user_id: user.id
+    can :manage, Post, user_id: user.id
   end
 end
