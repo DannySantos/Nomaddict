@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :posts
   resources :comments, only: [:update, :create, :destroy]
+  resources :bucket_lists, only: [:show]
 end

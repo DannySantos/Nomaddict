@@ -19,22 +19,12 @@
     <p class="alert"><%= alert %></p>
      
     <nav class="primary poa t0 w100p">
-      <%= link_to "DannySantos.me", root_path, class: "ml20" %>
+      <%= link_to "Nomaddict", root_path, class: "ml20" %>
       
       <ul class="tar lisn">
-        <% if current_user %>
-          <li>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "Log In", new_user_session_path %>
-          </li>
-
-          <li>
-            <%= link_to "Register", new_user_registration_path %>
-          </li>   
-        <% end %>    
+        <li>
+          <%= link_to "Make a Bucket List", current_user ? bucket_list_path(current_user.bucket_list) : new_user_session_path %>
+        </li> 
       </ul> 
     </nav>
     
