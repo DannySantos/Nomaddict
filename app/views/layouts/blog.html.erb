@@ -18,7 +18,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
      
-    <nav>
+    <nav class="primary poa t0 w100p">
       <%= link_to "Nomaddict", root_path, class: "ml20" %>
       
       <ul class="tar lisn">
@@ -28,9 +28,7 @@
       </ul> 
     </nav>
     
-    <div class="container-fluid">
-      <%= yield %>
-    </div>
+    <%= yield %>
     
     <footer class="primary">
       
