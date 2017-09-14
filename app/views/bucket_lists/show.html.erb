@@ -1,8 +1,20 @@
-<div class="row">
-  <div class="tac">
-    <h1>Bucket List</h1>
-  </div>
+<nav class="secondary row">
+  <div class="col-sm-12">
+    <h1 class="mr30 di">Bucket List</h1>
 
+    <ul class="lisn">
+      <li>
+        <%= link_to "My Bucket List", current_user ? bucket_list_path(current_user.bucket_list) : new_user_session_path %>
+      </li>
+
+      <li>
+        <%= link_to "Get Ideas", items_path %>
+      </li> 
+    </ul>
+  </div>
+</nav>
+
+<div class="row">
   <div id="bucketList" class="col-sm-7">
     <%= render "bucket_list" %>
   </div>

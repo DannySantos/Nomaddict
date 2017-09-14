@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  layout "blog"
 
   def index
     @posts = Post.all

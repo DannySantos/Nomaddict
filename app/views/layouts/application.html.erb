@@ -18,14 +18,25 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
      
-    <nav>
-      <%= link_to "Nomaddict", root_path, class: "ml20" %>
+    <nav class="primary">
+      <div class="col-sm-4">
+        <ul class="lisn">
+          <li>
+          </li> 
+        </ul>
+      </div>
       
-      <ul class="tar lisn">
-        <li>
-          <%= link_to "Make a Bucket List", current_user ? bucket_list_path(current_user.bucket_list) : new_user_session_path %>
-        </li> 
-      </ul> 
+      <div class="col-sm-4 tac">
+        <%= link_to "Nomaddict", root_path %>
+      </div>
+      
+      <div class="col-sm-4">
+        <ul class="w100p tar lisn">
+          <li>
+            <%= link_to "Make a Bucket List", current_user ? bucket_list_path(current_user.bucket_list) : new_user_session_path %>
+          </li> 
+        </ul>
+      </div>
     </nav>
     
     <div class="container-fluid">
