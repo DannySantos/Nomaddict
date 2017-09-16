@@ -1,0 +1,9 @@
+<% items.each do |item| %>
+  <div class="item">
+    <div>
+      <%= image_tag item.image_url || "placeholder.jpg" %>
+    </div>
+    
+    <h3 class="pl10 pr10"><%= item.title %></h3>
+  </div>
+<% end %>

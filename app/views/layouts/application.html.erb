@@ -33,12 +33,34 @@
       <div class="col-sm-4">
         <ul class="w100p tar lisn">
           <li>
-            <%= link_to "Make a Bucket List", current_user ? bucket_list_path(current_user.bucket_list) : new_user_session_path %>
+            <% if current_user %>
+              <%= link_to "My Bucket List", bucket_list_path(current_user.bucket_list) %>
+            <% else %>
+              <%= link_to "Make a Bucket List", new_user_session_path %>
+            <% end %>
           </li> 
         </ul>
       </div>
     </nav>
     
+    <% if controller_name == "bucket_lists" || controller_name == "items" %>
+      <nav class="secondary row">
+        <div class="col-sm-12">
+          <h1 class="ml20 mr30 di">Bucket List</h1>
+
+          <ul class="lisn">
+            <li>
+              <%= link_to "My Bucket List", current_user ? bucket_list_path(current_user.bucket_list) : new_user_session_path %>
+            </li>
+
+            <li>
+              <%= link_to "Get Ideas", items_path %>
+            </li> 
+          </ul>
+        </div>
+      </nav>
+    <% end %>
+
     <div class="container-fluid">
       <%= yield %>
     </div>

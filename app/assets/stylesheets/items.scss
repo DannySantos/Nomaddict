@@ -1,0 +1,19 @@
+.masonry {
+  width: 100%;
+  column-count: 4;
+  column-gap: 1em;
+}
+
+.item {
+  background-color: #eee;
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 0.8em;
+  
+  img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+}

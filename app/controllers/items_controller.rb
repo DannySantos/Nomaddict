@@ -1,4 +1,8 @@
 class ItemsController < ApplicationController
+  def index
+    @items = Item.where(curated: true)
+  end
+  
   def create
     @item = Item.where("lower(title) = ?", item_params[:title].downcase).first || Item.create(item_params)
     
