@@ -85,3 +85,10 @@ progress::-webkit-progress-value {
 progress::-moz-progress-bar {
   background-color: deepskyblue;
 }
+
+.btn-none {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}

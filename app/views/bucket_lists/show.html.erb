@@ -7,8 +7,6 @@
     <h2>Add a goal</h2>
 
     <%= form_for(@bucket_list.items.new, remote: true) do |f| %>
-      <%= f.hidden_field :bucket_list_id, value: @bucket_list.id %>
-
       <div class="row">
         <div class="col-sm-9">
           <%= f.text_field :title, class: "form-control", placeholder: "What do you want to do?" %>

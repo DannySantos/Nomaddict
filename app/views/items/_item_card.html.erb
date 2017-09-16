@@ -1,0 +1,37 @@
+<div id="item_card_<%= item.id %>" class="item">
+  <div>
+    <%= image_tag item.image_url || "placeholder.jpg" %>
+  </div>
+
+  <h3 class="pl10 pr10"><%= item.title %></h3>
+
+  <div class=" buttons-container">
+    <div class="col-sm-6 tac">
+      <% if current_user.bucket_list.items.include?(item) %>
+        <p>Added</p>
+      <% else %>
+        <p>
+          <%= form_for(BucketListItem.new, remote: true) do |f| %>
+            <%= f.hidden_field :item_id, value: item.id %>
+            <%= f.submit "+ Add", class: "btn-none" %>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+    
+    <div class="col-sm-6 tac">
+      <% if current_user.bucket_list.items.include?(item) %>
+        <p>Added</p>
+      <% else %>
+        <p>
+          <%= form_for(BucketListItem.new, remote: true) do |f| %>
+            <%= f.hidden_field :item_id, value: item.id %>
+            <%= f.submit "+ Add", class: "btn-none" %>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+    
+    <div class="clb"></div>
+  </div>
+</div>

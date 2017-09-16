@@ -1,0 +1,26 @@
+.item {
+  .buttons-container {
+    div {
+      border-top: 1px solid #c3c3c3;
+      
+    }
+    
+    div:hover {
+      background-color: #eaeaea;
+      cursor: pointer;
+    }
+    
+    div:first-child {
+      border-right: 1px solid #c3c3c3;
+      border-radius: 0 0 0 10px;
+    }
+    
+    div:nth-child(2) {
+      border-radius: 0 0 10px 0;
+    }
+    
+    div:last-child {
+      border-top: 0;
+    }
+  }
+}

@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :posts
   resources :comments, only: [:update, :create, :destroy]
   resources :bucket_lists, only: [:show]
+  resources :bucket_list_items, only: [:create]
   resources :items, only: [:index, :create]
 end
