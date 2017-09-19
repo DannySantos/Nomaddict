@@ -4,6 +4,19 @@ class BucketListItemsController < ApplicationController
     @bucket_list_item.bucket_list_id = current_user.bucket_list.id
     @bucket_list_item.save
     
+    get_bucket_list_ideas_instance_variables
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def update
+    @bucket_list_item = BucketListItem.find(params[:id])
+    @bucket_list_item.update(bucket_list_item_params)
+    
+    get_bucket_list_ideas_instance_variables
+    
     respond_to do |format|
       format.js
     end
@@ -12,6 +25,6 @@ class BucketListItemsController < ApplicationController
   private
   
   def bucket_list_item_params
-   params.require(:bucket_list_item).permit(:item_id)
+   params.require(:bucket_list_item).permit(:item_id, :status)
   end
 end

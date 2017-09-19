@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914174903) do
+ActiveRecord::Schema.define(version: 20170919135433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170914174903) do
     t.integer  "item_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "status"
     t.index ["bucket_list_id"], name: "index_bucket_list_items_on_bucket_list_id", using: :btree
     t.index ["item_id"], name: "index_bucket_list_items_on_item_id", using: :btree
   end

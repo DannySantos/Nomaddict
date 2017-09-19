@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.where(curated: true).limit(20)
+    get_bucket_list_ideas_instance_variables
   end
   
   def create
