@@ -24,7 +24,7 @@
         <p>Done</p>
       <% elsif @user_items.include?(item) %>
         <p>
-          <%= form_for(@user_bucket_list_items.where(item_id: item.id).first, remote: true) do |f| %>
+          <%= form_for(item.bucket_list_items.where(bucket_list: @bucket_list).first, remote: true) do |f| %>
             <%= f.hidden_field :status, value: "done" %>
             <%= f.submit "Mark as Done", class: "btn-none" %>
           <% end %>

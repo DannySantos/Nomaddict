@@ -10,12 +10,8 @@ class ApplicationController < ActionController::Base
   end
   
   def get_bucket_list_ideas_instance_variables
-    @user_items = current_user.bucket_list.items
-    @user_bucket_list_items = current_user.bucket_list.bucket_list_items
-    
-    @completed_user_items = []
-    current_user.bucket_list.bucket_list_items.where(status: 1).each do |bucket_list_item| 
-      @completed_user_items << bucket_list_item.item
-    end
+    @bucket_list = current_user.bucket_list
+    @user_items = @bucket_list.items
+    @completed_user_items = @bucket_list.items.where(bucket_list_items: { status: 1 })
   end
 end
