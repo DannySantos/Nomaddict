@@ -23,6 +23,15 @@ class BucketListItemsController < ApplicationController
     end
   end
   
+  def destroy
+    @bucket_list_item = BucketListItem.find(params[:id])
+    @bucket_list_item.destroy
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   private
   
   def bucket_list_item_params

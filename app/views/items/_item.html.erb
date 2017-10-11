@@ -1,5 +1,5 @@
 <% unless item.id.nil? %>
-  <li>
+  <li class="bli_<%= item.id %>">
     <%= item.title.capitalize %>: 
   
     <% if item.bucket_list_items.where(bucket_list_id: current_user.bucket_list.id).first.status == "done" %>
@@ -10,6 +10,10 @@
         <%= hidden_field_tag :context, "list" %>
         <%= f.submit "Mark as Done", class: "btn" %>
       <% end %>
+    <% end %>
+
+    <%= form_for(item.bucket_list_items.where(bucket_list: @bucket_list).first, remote: true, method: :delete) do |f| %>
+      <%= f.submit "Remove", class: "btn btn-error" %>
     <% end %>
   </li>
 <% end %>
