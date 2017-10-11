@@ -1,1 +1,5 @@
-$('#item_card_<%= @bucket_list_item.item_id %>').replaceWith('<%= j(render "items/item_card", item: @bucket_list_item.item) %>')
+<% if @context == "cards" %>
+  $('#item_card_<%= @bucket_list_item.item_id %>').replaceWith('<%= j(render "items/item_card", item: @bucket_list_item.item) %>')
+<% elsif @context == "list" %>
+  $('#edit_bucket_list_item_<%= @bucket_list_item.id %>').replaceWith('<%= @bucket_list_item.status %>')
+<% end %>

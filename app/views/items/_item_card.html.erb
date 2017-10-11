@@ -26,6 +26,7 @@
         <p>
           <%= form_for(item.bucket_list_items.where(bucket_list: @bucket_list).first, remote: true) do |f| %>
             <%= f.hidden_field :status, value: "done" %>
+            <%= hidden_field_tag :context, value: "card" %>
             <%= f.submit "Mark as Done", class: "btn-none" %>
           <% end %>
         </p>

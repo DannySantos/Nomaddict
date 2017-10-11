@@ -1,3 +1,15 @@
 <% unless item.id.nil? %>
-  <li><%= item.title.capitalize %>: <%= item.bucket_list_items.where(bucket_list_id: current_user.bucket_list.id).first.status %></li>
+  <li>
+    <%= item.title.capitalize %>: 
+  
+    <% if item.bucket_list_items.where(bucket_list_id: current_user.bucket_list.id).first.status == "done" %>
+      <%= item.bucket_list_items.where(bucket_list_id: current_user.bucket_list.id).first.status %>
+    <% else %>
+      <%= form_for(item.bucket_list_items.where(bucket_list: @bucket_list).first, remote: true) do |f| %>
+        <%= f.hidden_field :status, value: "done" %>
+        <%= hidden_field_tag :context, "list" %>
+        <%= f.submit "Mark as Done", class: "btn" %>
+      <% end %>
+    <% end %>
+  </li>
 <% end %>

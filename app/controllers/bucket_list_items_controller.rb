@@ -14,6 +14,7 @@ class BucketListItemsController < ApplicationController
   def update
     @bucket_list_item = BucketListItem.find(params[:id])
     @bucket_list_item.update(bucket_list_item_params)
+    @context = params[:context]
     
     get_bucket_list_ideas_instance_variables
     
