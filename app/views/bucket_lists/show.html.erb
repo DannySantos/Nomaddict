@@ -1,9 +1,5 @@
 <div class="row">
-  <div id="bucketList" class="col-sm-7">
-    <%= render "bucket_list" %>
-  </div>
-
-  <div class="col-sm-5">
+  <div class="col-sm-6 col-sm-offset-3">
     <h2>Add a goal</h2>
 
     <%= form_for(@bucket_list.items.new, remote: true) do |f| %>
@@ -20,4 +16,10 @@
   </div>
   
   <div class="clb"></div>
+</div>
+
+<div id="bucketList" class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <%= render "bucket_list" %>
+  </div>
 </div>

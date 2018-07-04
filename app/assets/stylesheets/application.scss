@@ -92,3 +92,33 @@ progress::-moz-progress-bar {
   border: 0;
   background-color: transparent;
 }
+
+.red-cross {
+  background-image: image-url("red_cross.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+}
+
+.green-tick {
+  background-image: image-url("green_tick.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.grey-tick {
+  background-image: image-url("grey_tick.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.grey-tick:hover {
+  background-image: image-url("green_tick.png");
+}

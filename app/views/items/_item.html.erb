@@ -1,19 +1,25 @@
 <% unless item.id.nil? %>
   <li class="bli_<%= item.id %>">
-    <%= item.title.capitalize %>: 
+    <div class="col-sm-6">
+      <%= item.title.capitalize %>
+    </div>
   
-    <% if item.bucket_list_items.where(bucket_list_id: current_user.bucket_list.id).first.status == "done" %>
-      <%= item.bucket_list_items.where(bucket_list_id: current_user.bucket_list.id).first.status %>
-    <% else %>
-      <%= form_for(item.bucket_list_items.where(bucket_list: @bucket_list).first, remote: true) do |f| %>
-        <%= f.hidden_field :status, value: "done" %>
-        <%= hidden_field_tag :context, "list" %>
-        <%= f.submit "Mark as Done", class: "btn" %>
+    <div class="col-sm-6">
+      <% if item.bucket_list_items.where(bucket_list_id: current_user.bucket_list.id).first.status == "done" %>
+        <span class="green-tick"></span><!--
+      <% else %>
+        <%= form_for(item.bucket_list_items.where(bucket_list: @bucket_list).first, remote: true, html: {class: "dib"}) do |f| %>
+          <%= f.hidden_field :status, value: "done" %>
+          <%= hidden_field_tag :context, "list" %>
+          <%= f.submit "", class: "btn-none grey-tick" %>
+        <% end %><!--
       <% end %>
-    <% end %>
 
-    <%= form_for(item.bucket_list_items.where(bucket_list: @bucket_list).first, remote: true, method: :delete) do |f| %>
-      <%= f.submit "Remove", class: "btn btn-error" %>
-    <% end %>
+      --><%= form_for(item.bucket_list_items.where(bucket_list: @bucket_list).first, remote: true, method: :delete, html: {class: "dib w50p"}) do |f| %>
+        <%= f.submit "", class: "btn-none red-cross" %>
+      <% end %>
+    </div>
+    
+    <div class="clb"></div>
   </li>
 <% end %>
